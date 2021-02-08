@@ -1,0 +1,12 @@
+Pretpostavka je da sve blagajne u svim prodajnim mjestima svakih 10 minuta prijavljuju stanje svojih zaliha u centralnu bazu podataka.
+To znači da centralna baza podataka ima stanje zaliha svih artikala i iz svih prodajnih mjesta u svakom trenutku (uz zanemarivih 10 minuta kašnjenja).
+
+Budući da se u centrali nalazi Java aplikacijski server, moguće bi bilo napraviti aplikaciju sa RESTfull Web Service
+koja bi koristila prijavljena stanja u centralnoj bazi podataka i čiji bi API mogli pozivati blagajne, koje se u ovom slučaju ponašaju kao klijenti.
+Na taj način u bilo kojem trenutku, bilo koja blagajna iz bilo kojeg prodajnog mjesta imala uvid u sve artikle u bilo kojem prodajnom mjestu, što je i cilj.
+
+Ulazni podaci koji bi se slali na API endpoint bi bili ID artikla za koji se traži upit i ID prodajnog mjesta iz kojeg se traži.
+Aplikacija bi morala koristiti neki library ili vanjski API (npr. Google Maps API) za pronalazak najbliže poslovnice koja ima traženi artikl od trenutne poslovnice.
+Ukoliko API endpoint ne vrati niti jednu poslovnicu, za pretpostaviti je da artikla više nema niti u jednoj poslovnici na zalihama (ili ne postoji).
+
+API bi se mogao iskoristiti i za druge upite blagajne, primjerice ukupan broj zaliha nekog artikla u svim prodajnim mjestima i sl.
